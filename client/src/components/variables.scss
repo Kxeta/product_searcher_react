@@ -2,6 +2,8 @@ $yellow: #FFF059;
 $gray: #EEEEEE;
 $dark_gray: #727980;
 
+
+$defaultColor: #444;
 $defaultSpacing: 8px;
 
 .m-r-lg{
@@ -16,8 +18,25 @@ $defaultSpacing: 8px;
   padding-bottom: $defaultSpacing;
 }
 
+.p-h-sm{
+  padding-left: $defaultSpacing;
+  padding-right: $defaultSpacing;
+}
+
 .b-radius-xs{
   border-radius: $defaultSpacing/2;
+}
+
+.b-radius-sm{
+  border-radius: $defaultSpacing;
+}
+
+.b-radius-md{
+  border-radius: $defaultSpacing*2;
+}
+
+.b-radius-lg{
+  border-radius: $defaultSpacing*4;
 }
 
 .bg-white{

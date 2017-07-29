@@ -19,6 +19,9 @@
 }
 .search-field-group{
   flex-grow: 2;
+  @media(max-width: 767px){
+    margin: 0
+  }
 }
 
 .search-field{
@@ -35,7 +38,7 @@
   background: $gray;
   border-radius: 0;
   color: $dark_gray;
-  &:hover{
+  &:hover, &:active, &:focus, &:visited{
     background: darken($gray, 15%);
     color: darken($dark_gray, 15%);
   }

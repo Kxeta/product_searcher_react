@@ -4,6 +4,10 @@ import './search-bar.css';
 import logo from '../../images/logo__small.png';
 import IconButton from '../ui-components/buttons/icon-button/icon-button'
 class SearchBar extends Component {
+	constructor(props){
+    super(props);
+  }
+  
   render() {
     return (
       <div className="search-bar p-v-sm">

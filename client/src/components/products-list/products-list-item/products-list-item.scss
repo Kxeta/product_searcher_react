@@ -1,0 +1,50 @@
+@import '../../variables.scss';
+
+.products-list-item{
+  display: flex;
+  @media(max-width: 767px){
+    display: block;
+  }
+}
+
+.products-list-item-img-wrapper{
+  flex-grow: 1;
+  flex: auto;
+  width: 160px;
+  @media(max-width: 767px){
+    display: block;
+    width: 100%;
+    flex: none;
+  }
+
+}
+
+.products-list-item-info-wrapper{
+  flex-grow: 2;
+  flex: auto;
+  @media(max-width: 767px){
+    display: block;
+    flex: none;
+  }
+}
+
+.products-list-item-info-price{
+  font-size: 28px;
+}
+.products-list-item-info-title{
+  font-size: 16px;
+  margin-top: 0;
+}
+
+.products-list-item-city-wrapper{
+  flex-grow: 1;
+  flex: auto;
+  @media(max-width: 767px){
+    display: block;
+    flex: none;
+  }
+}
+
+.products-list-item-city{
+  font-size: 12px;
+}
