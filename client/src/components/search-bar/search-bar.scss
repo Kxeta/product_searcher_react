@@ -1,0 +1,42 @@
+@import '../variables.scss';
+
+.search-bar{
+  background: $yellow;  
+}
+
+.search-bar-wrapper{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+}
+
+.search-field-wrapper{
+  flex-grow: 2;
+  overflow: hidden;
+}
+.search-field-group{
+  flex-grow: 2;
+}
+
+.search-field{
+  border: none !important;
+  width: 100% !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.search-button{
+  height: 34px;
+  padding: 6px 9px;
+  font-size: 18px;
+  background: $gray;
+  border-radius: 0;
+  color: $dark_gray;
+  &:hover{
+    background: darken($gray, 15%);
+    color: darken($dark_gray, 15%);
+  }
+}

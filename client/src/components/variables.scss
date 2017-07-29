@@ -1,0 +1,44 @@
+$yellow: #FFF059;
+$gray: #EEEEEE;
+$dark_gray: #727980;
+
+$defaultSpacing: 8px;
+
+.m-r-lg{
+  margin-right: $defaultSpacing*4;
+  @media(max-width: 768px){
+    margin-right: $defaultSpacing*2;
+  }
+}
+
+.p-v-sm{
+  padding-top: $defaultSpacing;
+  padding-bottom: $defaultSpacing;
+}
+
+.b-radius-xs{
+  border-radius: $defaultSpacing/2;
+}
+
+.bg-white{
+  background: white;
+}
+
+.inline{
+  display: inline-block;
+}
+
+.form-inline-flex{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  .form-group{
+    display: inline-flex;
+  }
+  button{
+    display: inline-flex;
+  }
+}
