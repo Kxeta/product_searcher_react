@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './search-bar.css';
 import logo from '../../images/logo__small.png';
 import IconButton from '../ui-components/buttons/icon-button/icon-button'
+
 class SearchBar extends Component {
 	constructor(props){
     super(props);
@@ -21,7 +22,7 @@ class SearchBar extends Component {
                 <div className="form-group search-field-group">
                   <input type="text" className="form-control search-field" id="" placeholder="Nunca deixe de buscar" />
                 </div>
-                <IconButton wrapperClasses="inline" classes="search-button" styleClass="default" icon="search"></IconButton>
+                <IconButton wrapperClasses="inline" classes="search-button" styleClass="default" icon="search" />
               </form>
             </div>
           </div>

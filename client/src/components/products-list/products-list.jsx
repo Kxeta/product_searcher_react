@@ -10,7 +10,7 @@ class ProductsList extends Component {
   
   render() {
     return (
-      <div className="container products-list b-radius-xs bg-white">
+      <div className="container content-container products-list b-radius-xs bg-white">
         <ul className="products-list-result list-unstyled">
           <li><a href="#" className="product-list-item-link"><ProductsListItem /></a></li>
           <li><a href="#" className="product-list-item-link"><ProductsListItem /></a></li>

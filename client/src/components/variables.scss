@@ -1,6 +1,7 @@
 $yellow: #FFF059;
 $gray: #EEEEEE;
 $dark_gray: #727980;
+$blue: #3483fa;
 
 
 $defaultColor: #444;
@@ -13,9 +14,18 @@ $defaultSpacing: 8px;
   }
 }
 
+.p-a-sm{
+  padding: $defaultSpacing;
+}
+
 .p-v-sm{
   padding-top: $defaultSpacing;
   padding-bottom: $defaultSpacing;
+}
+
+.p-v-md{
+  padding-top: $defaultSpacing*2;
+  padding-bottom: $defaultSpacing*2;
 }
 
 .p-h-sm{
@@ -47,6 +57,13 @@ $defaultSpacing: 8px;
   display: inline-block;
 }
 
+.btn-primary{
+  background: $blue;
+  &:hover{
+    background: darken($blue, 20%);
+  }
+}
+
 .form-inline-flex{
   display: flex;
   flex-direction: row;
@@ -60,4 +77,8 @@ $defaultSpacing: 8px;
   button{
     display: inline-flex;
   }
+}
+
+.content-container{
+  margin-bottom: 20px;
 }

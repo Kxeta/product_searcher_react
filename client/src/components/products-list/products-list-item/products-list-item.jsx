@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Image from '../../ui-components/image/image'; 
 import './products-list-item.css';
 
 class ProductsListItem extends Component {
@@ -11,7 +12,7 @@ class ProductsListItem extends Component {
     return (
       <div className="products-list-item">
         <div className="products-list-item-img-wrapper p-h-sm">
-          <img src="https://nikonrumors.com/wp-content/uploads/2014/03/Nikon-1-V3-sample-photo.jpg" alt="Titulo da ibagem" className="products-list-item-img img img-responsive"/>
+          <Image src="https://nikonrumors.com/wp-content/uploads/2014/03/Nikon-1-V3-sample-photo.jpg" alt="Titulo da imagem" styleClass="products-list-item-img"/>
         </div>
         <div className="products-list-item-info-wrapper p-h-sm">
           <p className="products-list-item-info-price">R$ 1982</p>
