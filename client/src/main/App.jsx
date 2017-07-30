@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 
 import SearchBar from '../components/search-bar/search-bar';
 import Breadcrumb from '../components/ui-components/breadcrumb/breadcrumb';
-import ProductsList from '../components/products-list/products-list';
-import ProductDetail from '../components/product-detail/product-detail';
+import Content from './Content';
 
 class App extends Component {
   render() {
@@ -12,7 +11,7 @@ class App extends Component {
       <div className="App">
         <SearchBar />
         <Breadcrumb />
-        <ProductDetail />
+        <Content />
 
       </div>
     );
