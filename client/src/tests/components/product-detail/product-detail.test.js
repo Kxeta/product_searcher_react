@@ -5,7 +5,7 @@ import ProductDetail from '../../../components/product-detail/product-detail';
 
 describe('ProductDetail', () => {
   it('renders without crashing', () => {
-    var productDetail = TestUtils.renderIntoDocument(<ProductDetail />);
+    var productDetail = TestUtils.renderIntoDocument(<ProductDetail id="MLA648187749"/>);
     expect(productDetail).toBeTruthy();
   });
 });

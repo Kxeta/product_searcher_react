@@ -5,7 +5,7 @@ import ProductsList from '../../../components/products-list/products-list';
 
 describe('ProductsList', () => {
   it('renders without crashing', () => {
-    var productsList = TestUtils.renderIntoDocument(<ProductsList />);
+    var productsList = TestUtils.renderIntoDocument(<ProductsList search="anything"/>);
     expect(productsList).toBeTruthy();
   });
 });

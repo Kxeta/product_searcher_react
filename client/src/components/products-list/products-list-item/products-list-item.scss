@@ -21,7 +21,8 @@
 
 .products-list-item-info-wrapper{
   flex-grow: 2;
-  flex: auto;
+  display: flex;
+  flex-direction: column;
   @media(max-width: 767px){
     display: block;
     flex: none;
@@ -39,7 +40,9 @@
 .products-list-item-city-wrapper{
   flex-grow: 1;
   flex: auto;
+  text-align: right;
   @media(max-width: 767px){
+    text-align: left;
     display: block;
     flex: none;
   }
