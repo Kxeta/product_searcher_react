@@ -2,6 +2,7 @@
 
 .search-bar{
   background: $yellow;  
+  border-bottom: 1px solid darken($gray, 10%);
 }
 
 .search-bar-wrapper{

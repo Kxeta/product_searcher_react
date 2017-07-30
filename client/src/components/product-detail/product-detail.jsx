@@ -8,6 +8,15 @@ import './product-detail.css';
 class ProductDetail extends Component {
 	constructor(props){
     super(props);
+  this.state={
+      id: '',
+      product: '' 
+    }
+  }
+
+  componentWillMount(){
+    let id = this.props.match.params.id;
+    this.setState({...this.state, id: id});
   }
   
   render() {
