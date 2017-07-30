@@ -1,0 +1,35 @@
+@import '../variables.scss';
+
+.product-detail-info-text{
+  color: lighten($dark_gray, 20%);
+}
+
+.product-detail-info-middot{
+  margin: 0 4px;
+}
+
+
+.product-detail-info-price{
+  font-size: 36px;
+}
+.product-detail-info-title{
+  font-size: 20px;
+  margin-top: 0;
+}
+
+
+.product-detail-city{
+  font-size: 12px;
+}
+
+.product-detail-description{
+  padding-top: 50px;
+  @media(max-width: 767px){
+    padding-top: 20px;
+  }
+}
+
+.product-detail-info-price-cents{
+  font-size: 20px;
+  vertical-align: text-top;
+}

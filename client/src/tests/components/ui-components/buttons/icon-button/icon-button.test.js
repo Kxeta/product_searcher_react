@@ -5,11 +5,11 @@ import IconButton from '../../../../../components/ui-components/buttons/icon-but
 
 describe('iconButton', () => {
   it('renders without crashing', () => {
-    var iconButton = TestUtils.renderIntoDocument(<IconButton style="primary" icon="globe"/>);
+    var iconButton = TestUtils.renderIntoDocument(<IconButton styleClass="primary" icon="globe"/>);
     expect(iconButton).toBeTruthy();
   });
   it('sets button style correctly', () => {
-    var iconButton = TestUtils.renderIntoDocument(<IconButton style="primary" />);
+    var iconButton = TestUtils.renderIntoDocument(<IconButton styleClass="primary" />);
     var btn = TestUtils.findRenderedDOMComponentWithClass(iconButton, 'btn-primary');
     expect(btn).toBeTruthy();
   });
