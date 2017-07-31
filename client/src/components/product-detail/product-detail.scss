@@ -22,6 +22,27 @@
   font-size: 12px;
 }
 
+.product-detail-info-wrapper{
+  position: relative;
+}
+
+.desktop-fixed-cta{
+  @media(min-width: 768px){
+    position: fixed;
+    widows: inherit;
+    padding: 0 16px 0 8px;
+  }
+  @media(min-width: 768px) and (max-width: 991px){
+    max-width: 242px;
+  }
+  @media(min-width: 992px) and (max-width: 1999px){
+    max-width: 315px;
+  }
+  @media(min-width: 1200px){
+    max-width: 382px;
+  }
+}
+
 .product-detail-description{
   padding-top: 50px;
   @media(max-width: 767px){

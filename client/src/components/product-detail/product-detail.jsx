@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import request from 'request';
 import { ReactImageMagnifyTouch } from 'react-image-magnify';
-import getSymbolFromCurrency from 'currency-symbol-map';
+import $ from 'jquery';
 
-
-import Button from '../ui-components/buttons/button/button'
+import ProductDetailCTA from './product-detail-cta/product-detail-cta'
 import './product-detail.css';
 
 class ProductDetail extends Component {
@@ -16,6 +15,14 @@ class ProductDetail extends Component {
       no_results: false,
       error: false
     }
+  }
+
+
+  handleScroll(event){
+
+  }
+
+  componentDidMount(){
   }
 
   componentWillMount(){
@@ -38,44 +45,6 @@ class ProductDetail extends Component {
           }
         }.bind(this));
     });
-  }
-
-  getProductCondition(condition){
-    switch(condition){
-      case 'new':
-        return "Novo"
-      case 'used':
-        return "Usado";
-      default: 
-        return "";
-    }
-  }
-
-  
-  itemPrice(product){
-    var currency = "";
-    var value = "-";
-    if(product){
-      let curr = product.price.currency;
-      let amo = product.price.amount;
-      if(curr != null){
-        currency = getSymbolFromCurrency(curr)
-      }
-      if(amo != null){
-        value = amo;
-      }
-    }
-    return currency + " " + value;
-  }
-  itemPriceDec(product){
-    var dec = "";
-    if(product){
-      dec = product.price.decimals;
-      if(dec.length == 1)
-        return dec + "0";
-      else
-        return dec;
-    }
   }
   
   render() {
@@ -103,14 +72,7 @@ class ProductDetail extends Component {
                 }} />
               </div>
               <div className="product-detail-info-wrapper p-h-sm col-xs-12 col-sm-4">
-                <p className="product-detail-info-text">
-                  <span className="product-detail-info-condition">{ this.getProductCondition(this.state.product.condition) }</span>
-                  <span className="product-detail-info-middot">&middot;</span>
-                  <span className="producti-detail-info-qtd-sold">{this.state.product ? this.state.product.sold_quantity : 0}</span> vendidos
-                </p>
-                <h1 className="product-detail-info-title">{this.state.product.title}</h1>
-                <p className="product-detail-info-price">{this.itemPrice(this.state.product)}<span className="product-detail-info-price-cents">{this.itemPriceDec(this.state.product)}</span></p>
-                <Button wrapperClasses="" classes="buy-button b-radius-xs btn-large btn-block" styleClass="primary" label="Comprar" />
+                <ProductDetailCTA className="desktop-fixed-cta" product={this.state.product} />
               </div>
             </div>
             <div className="product-detail-description-wrapper row">
@@ -119,6 +81,9 @@ class ProductDetail extends Component {
                 <div className="product-detail-description-text" dangerouslySetInnerHTML={{__html: this.state.product.description}}>
                 </div>
               </div>
+            </div>
+            <div className="product-detail-info-wrapper p-h-sm col-xs-12 hidden-sm hidden-md hidden-lg">
+              <ProductDetailCTA product={this.state.product} />
             </div>
           </div>
         )}
