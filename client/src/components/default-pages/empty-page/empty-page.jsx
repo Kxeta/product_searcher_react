@@ -3,9 +3,6 @@ import React, { Component } from 'react';
 import './empty-page.css';
 
 class EmptyPage extends Component {
-	constructor(props){
-    super(props);
-  }
   
   render() {
     return (

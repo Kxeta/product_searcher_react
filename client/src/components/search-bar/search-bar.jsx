@@ -14,7 +14,7 @@ class SearchBar extends Component {
   handleSubmitSearch(event){
     event.preventDefault();
     var searchText = $('#search-field-text').val();
-    window.location = '/items?search=' + searchText;
+    window.location = '/items?search=' + encodeURIComponent(searchText);
   }
   
   render() {

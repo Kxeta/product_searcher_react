@@ -3,9 +3,6 @@ import React, { Component } from 'react';
 import './four0four.css';
 
 class Four0Four extends Component {
-	constructor(props){
-    super(props);
-  }
   
   render() {
     return (

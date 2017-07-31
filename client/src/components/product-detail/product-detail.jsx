@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import request from 'request';
 import { ReactImageMagnifyTouch } from 'react-image-magnify';
+import getSymbolFromCurrency from 'currency-symbol-map';
 
 
 import Button from '../ui-components/buttons/button/button'
@@ -10,54 +12,116 @@ class ProductDetail extends Component {
     super(props);
     this.state={
       id: '',
-      product: '' 
+      product: '',
+      no_results: false,
+      error: false
     }
   }
 
   componentWillMount(){
     let id = this.props.id ? this.props.id : this.props.match.params.id;
-    this.setState({...this.state, id: id});
+    this.setState({...this.state, id: id},() => {
+      request('http://localhost:3000/api/items/' + this.state.id, function(error, response, body) {
+          if(typeof body !== 'undefined'){
+            var result = JSON.parse(body);
+            if(result.item != null){
+              this.setState({...this.state, product: result.item});
+            }
+            else
+              this.setState({...this.state, no_results: true});
+          }
+          else{
+              this.setState({...this.state, no_results: true});
+          }
+          if(error){
+            this.setState({...this.state, error: true});
+          }
+        }.bind(this));
+    });
+  }
+
+  getProductCondition(condition){
+    switch(condition){
+      case 'new':
+        return "Novo"
+      case 'used':
+        return "Usado";
+      default: 
+        return "";
+    }
+  }
+
+  
+  itemPrice(product){
+    var currency = "";
+    var value = "-";
+    if(product){
+      let curr = product.price.currency;
+      let amo = product.price.amount;
+      if(curr != null){
+        currency = getSymbolFromCurrency(curr)
+      }
+      if(amo != null){
+        value = amo;
+      }
+    }
+    return currency + " " + value;
+  }
+  itemPriceDec(product){
+    var dec = "";
+    if(product){
+      dec = product.price.decimals;
+      if(dec.length == 1)
+        return dec + "0";
+      else
+        return dec;
+    }
   }
   
   render() {
     return (
       <div className="product-detail container content-container b-radius-xs p-v-md bg-white">
-        <div className="product-detail-selling row">
-          <div className="product-detail-img-wrapper p-h-sm col-xs-12 col-sm-8">
-            <ReactImageMagnifyTouch {...{
-                smallImage: {
-                    alt: 'Titulo da Imagem',
-                    isFluidWidth: true,
-                    src: "https://nikonrumors.com/wp-content/uploads/2014/03/Nikon-1-V3-sample-photo.jpg",
-                },
-                largeImage: {
-                    alt: 'Titulo da Imagem',
-                    src: "https://nikonrumors.com/wp-content/uploads/2014/03/Nikon-1-V3-sample-photo.jpg",
-                    width: 1600,
-                    height: 900
-                },
-                className: "product-detail-img img img-responsive"
-            }} />
+        { this.state.error ? ( <div className="col-xs-12"><h2 className="text-center error-msg p-a-sm">Ops... Algo não deu certo...<br/> Tente pesquisar novamente mais tarde. </h2></div>) : '' }
+        { !this.state.error && this.state.no_results ? ( <div className="col-xs-12"><h2 className="text-center p-a-sm">Ops... Não encontramos este produto...<br/> Tente fazer uma pesquisa. </h2></div>) : 
+        ( <div className="product-detail-wrapper">
+            <div className="product-detail-selling row">
+              <div className="product-detail-img-wrapper p-h-sm col-xs-12 col-sm-8">
+                <ReactImageMagnifyTouch {...{
+                    smallImage: {
+                        alt: this.state.product ? this.state.product.title : '',
+                        src: this.state.product ? this.state.product.picture : '',
+                        isFluidWidth: true,
+                    },
+                    largeImage: {
+                        alt: this.state.product ? this.state.product.title : '',
+                        src: this.state.product ? this.state.product.picture : 'http://lorempixel.com/output/abstract-q-c-640-480-6.jpg',
+                        width: this.state.product ? this.state.product.picture_details.max_size.split('x')[0] : 640,
+                        height: this.state.product ? this.state.product.picture_details.max_size.split('x')[1] : 480
+                    },
+                    className: "product-detail-img img img-responsive",
+                    style: { maxWidth : this.state.product ? this.state.product.picture_details.size.split('x')[0] + 'px' : "100%"}
+                }} />
+              </div>
+              <div className="product-detail-info-wrapper p-h-sm col-xs-12 col-sm-4">
+                <p className="product-detail-info-text">
+                  <span className="product-detail-info-condition">{ this.getProductCondition(this.state.product.condition) }</span>
+                  <span className="product-detail-info-middot">&middot;</span>
+                  <span className="producti-detail-info-qtd-sold">{this.state.product ? this.state.product.sold_quantity : 0}</span> vendidos
+                </p>
+                <h1 className="product-detail-info-title">{this.state.product.title}</h1>
+                <p className="product-detail-info-price">{this.itemPrice(this.state.product)}<span className="product-detail-info-price-cents">{this.itemPriceDec(this.state.product)}</span></p>
+                <Button wrapperClasses="" classes="buy-button b-radius-xs btn-large btn-block" styleClass="primary" label="Comprar" />
+              </div>
+            </div>
+            <div className="product-detail-description-wrapper row">
+              <div className="product-detail-description col-xs-12 col-sm-8">
+                <h2>Descrição do produto</h2>
+                <div className="product-detail-description-text" dangerouslySetInnerHTML={{__html: this.state.product.description}}>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="product-detail-info-wrapper p-h-sm col-xs-12 col-sm-4">
-            <p className="product-detail-info-text">
-              <span className="product-detail-info-condition">Novo</span>
-              <span className="product-detail-info-middot">&middot;</span>
-              <span className="producti-detail-info-qtd-sold">255</span> vendidos
-            </p>
-            <h1 className="product-detail-info-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, consequatur.</h1>
-            <p className="product-detail-info-price">R$ 1.982 <span className="product-detail-info-price-cents">00</span></p>
-            <Button wrapperClasses="" classes="buy-button b-radius-xs btn-large btn-block" styleClass="primary" label="Comprar" />
-          </div>
-        </div>
-        <div className="product-detail-description-wrapper row">
-          <div className="product-detail-description col-xs-12 col-sm-8">
-            <h2>Descrição do produto</h2>
-            <p className="product-detail-description-text">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam asperiores atque distinctio natus vero temporibus perspiciatis recusandae sunt, alias sint similique itaque porro a nemo error praesentium cum, nulla suscipit.
-            </p>
-          </div>
-        </div>
+        )}
       </div>
     );
   }

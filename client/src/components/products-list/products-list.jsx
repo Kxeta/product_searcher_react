@@ -11,7 +11,7 @@ class ProductsList extends Component {
     super(props);
     this.state={
       search: '',
-      result: '',
+      items: '',
       no_results: false,
       error: false
     }
@@ -20,11 +20,11 @@ class ProductsList extends Component {
   componentDidMount() {
     let search = this.props.search ? this.props.search : queryString.parse(this.props.location.search).search;
     this.setState({...this.state, search: search}, ()=>{
-        request('http://localhost:3000/api/items?q=' + encodeURIComponent(this.state.search), function(error, response, body) {
-          if(typeof body != 'undefined'){
+        request('http://localhost:3000/api/items?q=' + this.state.search, function(error, response, body) {
+          if(typeof body !== 'undefined'){
             var result = JSON.parse(body);
-            if(result.data.length){
-              this.setState({...this.state, result: result.data});
+            if(result.items.length){
+              this.setState({...this.state, items: result.items});
               this.setState({...this.state, no_results: false});
             }
             else
@@ -34,7 +34,6 @@ class ProductsList extends Component {
               this.setState({...this.state, no_results: true});
           }
           if(error){
-            console.log(error);
             this.setState({...this.state, error: true});
           }
         }.bind(this));
@@ -44,7 +43,7 @@ class ProductsList extends Component {
   
   
   render() {
-    var productsListItems = $.map(this.state.result, 
+    var productsListItems = $.map(this.state.items, 
                               function(item){
                                 return <li key={item.id}><a href={ "/items/" + item.id } className="product-list-item-link"><ProductsListItem productItem={item}/></a></li>;
                               }

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 
 import SearchBar from '../components/search-bar/search-bar';
-import Breadcrumb from '../components/ui-components/breadcrumb/breadcrumb';
 import Content from './Content';
 
 class App extends Component {
@@ -10,7 +9,6 @@ class App extends Component {
     return (
       <div className="App">
         <SearchBar />
-        <Breadcrumb />
         <Content />
 
       </div>
