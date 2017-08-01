@@ -17,7 +17,7 @@
 * If it says "No tests found related to files changed since last commit." just press `a`
 
 ### Technical Details ###
-* To develop this challenge, I used the framework [React](http://facebook.github.io/react/) alongside with [WebPack](https://webpack.github.io/), throught [Create React App] (https://github.com/facebookincubator/create-react-app).
+* To develop this challenge, I used the framework [React](http://facebook.github.io/react/) alongside with [WebPack](https://webpack.github.io/), throught [Create React App](https://github.com/facebookincubator/create-react-app).
 * For style sheets' creation, I used Sass and complemented the styles with [Twitter Bootstrap](https://twitter.github.com/bootstrap/) and some icons from [FontAwesome](http://fontawesome.io/).
 * For the server side, I used [Express](http://expressjs.com/) and [NodeJS](https://nodejs.org/en/)
 * For the tests, I used Jest that comes with Create React App
