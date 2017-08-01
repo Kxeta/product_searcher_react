@@ -14,6 +14,7 @@
 
 ### Tests ###
 * Inside the "client" folder, Run `npm run test`. It would run the tests and show the results on console.
+* If it says "No tests found related to files changed since last commit." just press `a`
 
 ### Technical Details ###
 * To develop this challenge, I used the framework [React](http://facebook.github.io/react/) alongside with [WebPack](https://webpack.github.io/), throught [Create React App] (https://github.com/facebookincubator/create-react-app).
