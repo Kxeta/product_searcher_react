@@ -5,12 +5,13 @@ import ProductsListItem from '../../../../components/products-list/products-list
 
 const productItem = {
   title: "Teste",
-  thumbnail: "https://media-cdn.tripadvisor.com/media/photo-s/01/3a/b3/2d/fernando-de-noronha.jpg",
-  currency_id: "BRL",
-  price: "1800",
-  address:{
-    city_name: "Belo Horizonte"
-  }
+  picture: "https://media-cdn.tripadvisor.com/media/photo-s/01/3a/b3/2d/fernando-de-noronha.jpg",
+  price:{
+    currency: "BRL",
+    amount: "1800",
+    decimals: "97",
+  },
+  city: "Belo Horizonte"
 };
 
 describe('ProductsListItem', () => {
@@ -22,7 +23,7 @@ describe('ProductsListItem', () => {
   it('renders rigth product image', () => {
     var productsListItem = TestUtils.renderIntoDocument(<ProductsListItem productItem={productItem} />);
     var img = TestUtils.findRenderedDOMComponentWithClass(productsListItem, 'products-list-item-img');
-    expect(img.getAttribute('src')).toEqual(productItem.thumbnail);
+    expect(img.getAttribute('src')).toEqual(productItem.picture);
   });
   
   it('renders rigth product alt image', () => {
@@ -40,7 +41,7 @@ describe('ProductsListItem', () => {
   it('renders rigth product price', () => {
     var productsListItem = TestUtils.renderIntoDocument(<ProductsListItem productItem={productItem} />);
     var price = TestUtils.findRenderedDOMComponentWithClass(productsListItem, 'products-list-item-info-price');
-    expect(price.textContent).toContain(productItem.price);
+    expect(price.textContent).toContain(productItem.price.amount);
   });
   
 });
