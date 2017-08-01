@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import request from 'request';
 import { ReactImageMagnifyTouch } from 'react-image-magnify';
-import $ from 'jquery';
 
 import ProductDetailCTA from './product-detail-cta/product-detail-cta'
 import './product-detail.css';
